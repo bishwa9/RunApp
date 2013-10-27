@@ -1,0 +1,64 @@
+Api Documentation:
+
+Google Protocol Buffer Messages
+
+picture
+	- fileLoc = location of the picture on the device
+	- description = description put in by the user before submittin picture
+	- locationTaken = longitude and latitude of the place the picture was taken
+	- owner = who this picture belongs to
+
+person
+	- String name = ID of the person
+    	- double totalDist
+    	- double maxDist
+     	- double avgSpeed
+    	- double maxSpeed
+    	- long totalTime
+    	- long maxTime
+    	- list of picture
+
+allregisteredpersons
+	- list of person
+
+response
+	- string messageStatus
+    	- either a Person or a allregisteredpersons
+	- int numofPersons
+
+URL : /
+Accesses default servlet
+Query Parameters  : nothing
+Reply Parameters  : Google Protocol Buffer Response message
+			Response carries - Message Status (OK / ERROR)
+				if (OK) - response carries allregisteredpersons message with repeated persons.
+				else if(ERROR) - response carries a String description of the message concatenated to the message Status.
+
+URL : /register
+Accesses registration servlet
+Query Parameters  :
+	- key = "name", value = name of the person to be registered
+Reply parameters : Google Protocol Buffer Response message
+			Response carries - Message Status (OK / ERROR)
+				if (OK) - response carries a single person message (representing the status of the registered person)
+					  with the number of registered persons
+				else if(ERROR) - response carries a String description of the message concatenated to the message Status.
+						- if no name provided "ERROR: Not proper message format!" message status 
+
+URL : /modify
+Accesses modify servlet
+Query Parameters  :
+	- key = "name", value = name of the person to be registered
+	- key = "dist", value = new distance ran ("" if dont want to modify the speed aspect) - have to enter a time as well
+	- key = "time", value = new time ran ("" if dont want to modify the speed aspect) - have to enter distance as well
+	- key = "fileLoc", value = location of file on client device ("" if no photo to add) - have to enter takenLoc and description parameters
+	- key = "takenLoc", value = lat and long of photo ("" if no photo to add) - have to enter fileLoc and description parameters
+	- key = "description", value = description of photo ("" if no photo to add) - have to enter fileLoc and takenLoc parameters
+Reply parameters : Google Protocol Buffer Response message
+			Response carries - Message Status (OK / ERROR)
+				if (OK) - response carries a single person message (representing the status of the modified person)
+					  with the number of registered persons
+				else if(ERROR) - response carries a String description of the message concatenated to the message Status.
+						- if either parameter is absent "ERROR: Not proper message format!" message status
+						- no error if a query is incomplete (have to have all required parameters)
+						- if name is "" "ERROR: No name provided" is the message status 
