@@ -1,0 +1,33 @@
+package data;
+
+option java_package = "data";
+option java_outer_classname = "PersonProto";
+
+message picture{
+    required string fileLoc = 1;
+    required string description = 2;
+    required string locationTaken = 3;
+    required string owner = 4;
+}
+
+message Person{
+    required string name = 1;
+    required double totalDist = 2;
+    required double maxDist = 3;
+    required double avgSpeed = 4;
+    required double maxSpeed = 5;
+    required int64   totalTime = 6;
+    required int64   maxTime = 7;
+    repeated picture photo = 8;    
+}
+
+message allRegisteredPersons{
+    repeated Person person = 1;
+}
+
+message response{
+    required string messageStatus = 1;
+    optional Person person = 2;
+    optional allRegisteredPersons persons = 3;
+    optional int32 numOfPersons = 4;
+}

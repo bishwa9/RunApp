@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NIkePlusPlus</string>
+    <string name="action_takePicture">TakePicure!</string>
+    <string name="title_activity_camera_screen">CameraScreen</string>
+    <string name="title_activity_record_screen">RecordScreen</string>
+    <string name="title_ipport_dialog">IPPortDialog</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_run">RunScreen</string>
+    <string name="DialogTitle">Type new IP and Port and click ENTER</string>
+    <string name="pos">ENTER</string>
+    <string name="neg">CANCEL</string>
+    <string name="ip">IPAddress</string>
+    <string name="port">Port</string>
+    <string name="title_activity_ipport_dialog">IPPortDialog</string>
+    
+
+</resources>
